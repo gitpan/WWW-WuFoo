@@ -2,10 +2,11 @@ package WWW::WuFoo::Field;
 
 use Moose;
 
-# ABSTRACT: turns baubles into trinkets
+# ABSTRACT: The Fields API describes the hierarchy of your data. At the heart of this API is the listing of FieldId values. Each FieldId corresponds to a value in the Entries API.
 
 has '_wufoo'            => (is => 'rw', isa => 'WWW::WuFoo');
-has 'id'                => (is => 'rw', isa => 'Str');
+has '_form'             => (is => 'rw', isa => 'WWW::WuFoo::Form');
+has 'id'                => (is => 'rw', isa => 'Str', required => 1);
 has 'type'              => (is => 'rw', isa => 'Str');
 has 'title'             => (is => 'rw', isa => 'Str');
 has 'defaultval'        => (is => 'rw', isa => 'Str');
@@ -27,11 +28,11 @@ __END__
 
 =head1 NAME
 
-WWW::WuFoo::Field - turns baubles into trinkets
+WWW::WuFoo::Field - The Fields API describes the hierarchy of your data. At the heart of this API is the listing of FieldId values. Each FieldId corresponds to a value in the Entries API.
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 AUTHOR
 

@@ -2,7 +2,16 @@ package WWW::WuFoo::Report;
 
 use Moose;
 
-# ABSTRACT: turns baubles into trinkets
+# ABSTRACT: The Reports API is used to gather details about the reports you have permission to view.
+
+has '_wufoo'            => (is => 'rw', isa => 'WWW::WuFoo');
+has 'name'    => (is => 'rw', isa => 'Str');
+has 'ispublic'    => (is => 'rw', isa => 'Str');
+has 'url'    => (is => 'rw', isa => 'Str');
+has 'description'    => (is => 'rw', isa => 'Str');
+has 'datecreated'    => (is => 'rw', isa => 'Str');
+has 'dateupdated'    => (is => 'rw', isa => 'Str');
+has 'hash'    => (is => 'rw', isa => 'Str');
 
 
 
@@ -13,11 +22,11 @@ __END__
 
 =head1 NAME
 
-WWW::WuFoo::Report - turns baubles into trinkets
+WWW::WuFoo::Report - The Reports API is used to gather details about the reports you have permission to view.
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 AUTHOR
 

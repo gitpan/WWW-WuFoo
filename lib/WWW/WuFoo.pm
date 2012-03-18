@@ -9,12 +9,27 @@ use JSON;
 
 use WWW::WuFoo::Form;
 use WWW::WuFoo::User;
+$VERSION  = "0.002";
 
-# ABSTRACT: turns baubles into trinkets
+# ABSTRACT: Interface to WuFoo.com's online forms
 
 has 'subdomain' => (is => 'rw', isa => 'Str');
 has 'apikey'    => (is => 'rw', isa => 'Str');
 
+sub login {
+    my ($self) = @_;
+
+}
+
+##Get a specific form - search by name
+
+sub form {
+    my ($self, %opts) = @_;
+    my $ref = $self->forms;
+    foreach my $form (@$ref) {
+        return $form if $form->name eq $opts{name};
+    }
+}
 
 sub forms {
     my ($self, $opts) = @_;
@@ -30,7 +45,9 @@ sub forms {
         }
         
         $hash->{_wufoo} = $self;
-        push(@arr,WWW::WuFoo::Form->new($hash));
+        
+        my $obj = WWW::WuFoo::Form->new($hash);
+        push(@arr,$obj);
     }
 
     return \@arr;
@@ -71,11 +88,11 @@ __END__
 
 =head1 NAME
 
-WWW::WuFoo - turns baubles into trinkets
+WWW::WuFoo - Interface to WuFoo.com's online forms
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 AUTHOR
 

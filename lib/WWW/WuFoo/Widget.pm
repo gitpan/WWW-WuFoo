@@ -2,7 +2,14 @@ package WWW::WuFoo::Widget;
 
 use Moose;
 
-# ABSTRACT: turns baubles into trinkets
+# ABSTRACT: The Widgetes API is used to gather details about the widgets you have permission to view. Used in combination with the reports you could easily build a tool to view widgets for a given report.
+
+has _wufoo          => (is => 'rw', isa => 'WWW::WuFoo');
+has 'name'          => (is => 'rw', isa => 'Str');
+has 'size'          => (is => 'rw', isa => 'Str');
+has 'type'          => (is => 'rw', isa => 'Str');
+has 'typedesc'      => (is => 'rw', isa => 'Str');
+has 'hash'          => (is => 'rw', isa => 'Str');
 
 
 
@@ -13,11 +20,11 @@ __END__
 
 =head1 NAME
 
-WWW::WuFoo::Widget - turns baubles into trinkets
+WWW::WuFoo::Widget - The Widgetes API is used to gather details about the widgets you have permission to view. Used in combination with the reports you could easily build a tool to view widgets for a given report.
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 AUTHOR
 

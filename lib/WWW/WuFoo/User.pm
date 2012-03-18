@@ -2,7 +2,7 @@ package WWW::WuFoo::User;
 
 use Moose;
 
-# ABSTRACT: turns baubles into trinkets
+# ABSTRACT: The Users API is used to gather details about the users you have defined through User Management.
 
 has '_wufoo'            => (is => 'rw', isa => 'WWW::WuFoo');
 has 'createthemes'      => (is => 'rw', isa => 'Str');
@@ -37,11 +37,11 @@ __END__
 
 =head1 NAME
 
-WWW::WuFoo::User - turns baubles into trinkets
+WWW::WuFoo::User - The Users API is used to gather details about the users you have defined through User Management.
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 AUTHOR
 

@@ -2,7 +2,8 @@ package WWW::WuFoo::WebHook;
 
 use Moose;
 
-# ABSTRACT: turns baubles into trinkets
+# ABSTRACT: The WebHooks API is designed to help you inject a web hook into your user’s form. We believe this API will help reduce the friction your users experience integrating with your site. Let’s compare the steps your user would have to go through to set up a traditional site-to-site web hook integration to a Web Hook set up through the API.
+
 
 
 
@@ -13,11 +14,11 @@ __END__
 
 =head1 NAME
 
-WWW::WuFoo::WebHook - turns baubles into trinkets
+WWW::WuFoo::WebHook - The WebHooks API is designed to help you inject a web hook into your user’s form. We believe this API will help reduce the friction your users experience integrating with your site. Let’s compare the steps your user would have to go through to set up a traditional site-to-site web hook integration to a Web Hook set up through the API.
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 AUTHOR
 
