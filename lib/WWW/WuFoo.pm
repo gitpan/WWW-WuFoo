@@ -1,4 +1,7 @@
 package WWW::WuFoo;
+{
+  $WWW::WuFoo::VERSION = '0.004';
+}
 
 use strict;
 use warnings;

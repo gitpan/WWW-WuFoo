@@ -1,4 +1,7 @@
 package WWW::WuFoo::Login;
+{
+  $WWW::WuFoo::Login::VERSION = '0.004';
+}
 
 use Moose;
 

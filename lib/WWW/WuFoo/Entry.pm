@@ -1,4 +1,7 @@
 package WWW::WuFoo::Entry;
+{
+  $WWW::WuFoo::Entry::VERSION = '0.004';
+}
 
 use Moose;
 use Data::Dumper;

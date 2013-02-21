@@ -1,4 +1,7 @@
 package WWW::WuFoo::Report;
+{
+  $WWW::WuFoo::Report::VERSION = '0.004';
+}
 
 use Moose;
 

@@ -1,4 +1,7 @@
 package WWW::WuFoo::User;
+{
+  $WWW::WuFoo::User::VERSION = '0.004';
+}
 
 use Moose;
 
