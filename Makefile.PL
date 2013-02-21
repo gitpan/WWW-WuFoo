@@ -19,17 +19,10 @@ my %WriteMakefileArgs = (
   "EXE_FILES" => [],
   "LICENSE" => "perl",
   "NAME" => "WWW::WuFoo",
-  "PREREQ_PM" => {
-    "Data::Dumper" => 0,
-    "JSON" => 0,
-    "LWP::UserAgent" => 0,
-    "Moose" => 0,
-    "strict" => 0,
-    "warnings" => 0
-  },
-  "VERSION" => "0.002",
+  "PREREQ_PM" => {},
+  "VERSION" => "0.003",
   "test" => {
-    "TESTS" => ""
+    "TESTS" => "t/*.t"
   }
 );
 

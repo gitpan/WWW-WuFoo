@@ -3,6 +3,8 @@ package WWW::WuFoo::Form;
 use Moose;
 use Data::Dumper;
 use WWW::WuFoo::Field;
+use WWW::WuFoo::Entry;
+use JSON;
 
 # ABSTRACT: The Forms API is used to gather details about the forms you have permission to access. This API can be used to create a list of all forms belonging to a user and dynamically generate a form embed snippet to use in your application.
 
@@ -24,12 +26,36 @@ has 'name'              => (is => 'rw', isa => 'Str');
 has 'redirectmessage'   => (is => 'rw', isa => 'Str');
 has 'linkentriescount'  => (is => 'rw', isa => 'Str');
 
+sub all_entry_values {
+    my ($self) = @_;
+    my @arr;
+    my $ref = $self->entries;
+    foreach my $entry (@$ref) {
+        push(@arr,$entry->val_hash);
+    }
+    
+    return \@arr;
+}
+
 
 sub entries {
     my ($self) = @_;
     
     my $url = '/api/v3/forms/' . $self->hash . '/entries.json';
-    return $self->_wufoo->do_request($url);
+    my $ref = $self->_wufoo->do_request($url)->{Entries};
+    my @arr;
+    foreach my $entry (@$ref) {
+        my $hash;
+        foreach my $key (keys %$entry) {
+            $hash->{lc $key} = $entry->{$key} || '';
+        }
+
+        $hash->{_form} = $self;
+        $hash->{_original} = $entry;
+        push(@arr,WWW::WuFoo::Entry->new($hash));
+    }
+
+    return \@arr;
 }
 
 sub fields {
@@ -45,7 +71,7 @@ sub fields {
             $hash->{lc $key} = $field->{$key} || '';
         }
 
-        print Dumper($field);
+#        print Dumper($field);
         $hash->{_form} = $self;
         push(@arr,WWW::WuFoo::Field->new($hash));
     }
@@ -53,30 +79,15 @@ sub fields {
     return \@arr;
 }
 
+sub create_webhook {
+    my ($self, $p) = @_;
+
+    my $url = '/api/v3/forms/' . $self->hash . '/webhooks.json';
+    my $data = '"' . 'url=' . $p->{url} . '&handshakeKey=' . $p->{handshakeKey} . '&metadata=true' . '"';
+    my $command = 'curl -i -H "Accept: application/json" -X PUT -d ' . $data . ' -u ' . $self->_wufoo->apikey . ':footastic https://' . $self->_wufoo->subdomain . '.wufoo.com' . $url;
+    my $output = `$command`;
+#    my $obj = from_json($output);
+#    return $obj;
+}
 
 1;
-
-__END__
-=pod
-
-=head1 NAME
-
-WWW::WuFoo::Form - The Forms API is used to gather details about the forms you have permission to access. This API can be used to create a list of all forms belonging to a user and dynamically generate a form embed snippet to use in your application.
-
-=head1 VERSION
-
-version 0.002
-
-=head1 AUTHOR
-
-Peter Lytle <pete@bluecampaigns.com>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2012 by Peter Lytle.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
-
-=cut
-

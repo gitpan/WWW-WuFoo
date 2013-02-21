@@ -9,7 +9,6 @@ use JSON;
 
 use WWW::WuFoo::Form;
 use WWW::WuFoo::User;
-$VERSION  = "0.002";
 
 # ABSTRACT: Interface to WuFoo.com's online forms
 
@@ -18,8 +17,8 @@ has 'apikey'    => (is => 'rw', isa => 'Str');
 
 sub login {
     my ($self) = @_;
-
 }
+
 
 ##Get a specific form - search by name
 
@@ -28,6 +27,7 @@ sub form {
     my $ref = $self->forms;
     foreach my $form (@$ref) {
         return $form if $form->name eq $opts{name};
+        return $form if $form->hash eq $opts{hash};
     }
 }
 
@@ -82,28 +82,3 @@ sub do_request {
 }
 
 1;
-
-__END__
-=pod
-
-=head1 NAME
-
-WWW::WuFoo - Interface to WuFoo.com's online forms
-
-=head1 VERSION
-
-version 0.002
-
-=head1 AUTHOR
-
-Peter Lytle <pete@bluecampaigns.com>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2012 by Peter Lytle.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
-
-=cut
-

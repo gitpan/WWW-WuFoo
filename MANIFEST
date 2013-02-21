@@ -1,8 +1,10 @@
+Changes
 LICENSE
 MANIFEST
 META.yml
 Makefile.PL
 README
+README.md
 dist.ini
 lib/WWW/WuFoo.pm
 lib/WWW/WuFoo/Comment.pm
@@ -14,3 +16,4 @@ lib/WWW/WuFoo/Report.pm
 lib/WWW/WuFoo/User.pm
 lib/WWW/WuFoo/WebHook.pm
 lib/WWW/WuFoo/Widget.pm
+t/WWW-WuFoo.t
