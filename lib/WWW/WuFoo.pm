@@ -1,6 +1,6 @@
 package WWW::WuFoo;
 {
-  $WWW::WuFoo::VERSION = '0.004';
+  $WWW::WuFoo::VERSION = '0.005';
 }
 
 use strict;

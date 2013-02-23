@@ -1,6 +1,6 @@
 package WWW::WuFoo::Login;
 {
-  $WWW::WuFoo::Login::VERSION = '0.004';
+  $WWW::WuFoo::Login::VERSION = '0.005';
 }
 
 use Moose;

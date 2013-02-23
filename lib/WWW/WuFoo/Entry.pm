@@ -1,6 +1,6 @@
 package WWW::WuFoo::Entry;
 {
-  $WWW::WuFoo::Entry::VERSION = '0.004';
+  $WWW::WuFoo::Entry::VERSION = '0.005';
 }
 
 use Moose;

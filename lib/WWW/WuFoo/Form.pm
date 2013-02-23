@@ -1,6 +1,6 @@
 package WWW::WuFoo::Form;
 {
-  $WWW::WuFoo::Form::VERSION = '0.004';
+  $WWW::WuFoo::Form::VERSION = '0.005';
 }
 
 use Moose;

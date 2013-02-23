@@ -19,8 +19,10 @@ my %WriteMakefileArgs = (
   "EXE_FILES" => [],
   "LICENSE" => "perl",
   "NAME" => "WWW::WuFoo",
-  "PREREQ_PM" => {},
-  "VERSION" => "0.004",
+  "PREREQ_PM" => {
+    "Moose" => 0
+  },
+  "VERSION" => "0.005",
   "test" => {
     "TESTS" => "t/*.t"
   }
