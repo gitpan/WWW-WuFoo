@@ -1,10 +1,9 @@
 package WWW::WuFoo::Form;
 {
-  $WWW::WuFoo::Form::VERSION = '0.005';
+  $WWW::WuFoo::Form::VERSION = '0.006';
 }
 
 use Moose;
-use Data::Dumper;
 use WWW::WuFoo::Field;
 use WWW::WuFoo::Entry;
 use JSON;

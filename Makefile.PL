@@ -11,7 +11,9 @@ use ExtUtils::MakeMaker 6.30;
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Interface to WuFoo.com's online forms",
   "AUTHOR" => "Peter Lytle <pete\@bluecampaigns.com>",
-  "BUILD_REQUIRES" => {},
+  "BUILD_REQUIRES" => {
+    "Test::More" => 0
+  },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
   },
@@ -20,9 +22,13 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "WWW::WuFoo",
   "PREREQ_PM" => {
-    "Moose" => 0
+    "JSON" => 0,
+    "LWP::UserAgent" => 0,
+    "Moose" => 0,
+    "strict" => 0,
+    "warnings" => 0
   },
-  "VERSION" => "0.005",
+  "VERSION" => "0.006",
   "test" => {
     "TESTS" => "t/*.t"
   }

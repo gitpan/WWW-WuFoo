@@ -1,13 +1,12 @@
 package WWW::WuFoo;
 {
-  $WWW::WuFoo::VERSION = '0.005';
+  $WWW::WuFoo::VERSION = '0.006';
 }
 
 use strict;
 use warnings;
 use Moose;
 use LWP::UserAgent;
-use Data::Dumper;
 use JSON;
 
 use WWW::WuFoo::Form;

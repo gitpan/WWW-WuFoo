@@ -1,10 +1,9 @@
 package WWW::WuFoo::Entry;
 {
-  $WWW::WuFoo::Entry::VERSION = '0.005';
+  $WWW::WuFoo::Entry::VERSION = '0.006';
 }
 
 use Moose;
-use Data::Dumper;
 
 # ABSTRACT: The Entries API is used to gather the data that users have submitted to your form. In this section we’ll describe the hierarchy of the entries element as well as describe the syntax for filtering this data.
 

@@ -1,6 +1,6 @@
 package WWW::WuFoo::Field;
 {
-  $WWW::WuFoo::Field::VERSION = '0.005';
+  $WWW::WuFoo::Field::VERSION = '0.006';
 }
 
 use Moose;
