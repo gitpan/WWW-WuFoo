@@ -14,9 +14,11 @@ meta-spec:
   version: 1.4
 name: WWW-WuFoo
 requires:
+  Data::Dumper: 0
   JSON: 0
   LWP::UserAgent: 0
   Moose: 0
+  diagnostics: 0
   strict: 0
   warnings: 0
-version: 0.006
+version: 0.007

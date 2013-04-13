@@ -1,6 +1,6 @@
 package WWW::WuFoo::Comment;
 {
-  $WWW::WuFoo::Comment::VERSION = '0.006';
+  $WWW::WuFoo::Comment::VERSION = '0.007';
 }
 
 use Moose;

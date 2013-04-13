@@ -1,6 +1,6 @@
 package WWW::WuFoo::WebHook;
 {
-  $WWW::WuFoo::WebHook::VERSION = '0.006';
+  $WWW::WuFoo::WebHook::VERSION = '0.007';
 }
 
 use Moose;

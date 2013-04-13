@@ -1,6 +1,6 @@
 package WWW::WuFoo;
 {
-  $WWW::WuFoo::VERSION = '0.006';
+  $WWW::WuFoo::VERSION = '0.007';
 }
 
 use strict;
@@ -11,6 +11,7 @@ use JSON;
 
 use WWW::WuFoo::Form;
 use WWW::WuFoo::User;
+use Data::Dumper;
 
 # ABSTRACT: Interface to WuFoo.com's online forms
 
@@ -35,7 +36,7 @@ sub form {
 
 sub forms {
     my ($self, $opts) = @_;
-    my $url = '/api/v3/forms.json&IncludeTodayCount=true';
+    my $url = '/api/v3/forms.json?IncludeTodayCount=true';
 
     my @arr;
     my $obj = $self->do_request($url)->{Forms};
@@ -77,9 +78,20 @@ sub users {
 sub do_request {
     my ($self, $url) = @_;
 
-    my $command = 'curl --silent -u ' . $self->apikey . ':footastic https://' . $self->subdomain . '.wufoo.com' . $url;
-    my $output = `$command`;
-    my $obj = from_json($output);
+    $url = 'https://' . $self->subdomain . '.wufoo.com' . $url;
+    my $ua = LWP::UserAgent->new;
+    $ua->timeout(120);
+    $ua->credentials($self->subdomain . '.wufoo.com:443','Wufoo Secret Lab',$self->apikey,'footastic');
+  
+#    print "Getting url: $url\n";
+    my $content = $ua->get($url)->content;
+#    print Dumper($content);
+
+#    my $command = 'curl -u ' . $self->apikey . ':footastic https://' . $self->subdomain . '.wufoo.com' . $url;
+#    print Dumper("COMMAND: " . $command);
+#    my $output = `$command`;
+#    print Dumper($output);
+    my $obj = from_json($content);
     return $obj;
 }
 

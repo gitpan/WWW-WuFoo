@@ -1,6 +1,6 @@
 package WWW::WuFoo::Report;
 {
-  $WWW::WuFoo::Report::VERSION = '0.006';
+  $WWW::WuFoo::Report::VERSION = '0.007';
 }
 
 use Moose;

@@ -1,6 +1,6 @@
 package WWW::WuFoo::Widget;
 {
-  $WWW::WuFoo::Widget::VERSION = '0.006';
+  $WWW::WuFoo::Widget::VERSION = '0.007';
 }
 
 use Moose;

@@ -1,12 +1,14 @@
 package WWW::WuFoo::Form;
 {
-  $WWW::WuFoo::Form::VERSION = '0.006';
+  $WWW::WuFoo::Form::VERSION = '0.007';
 }
 
+use diagnostics;
 use Moose;
 use WWW::WuFoo::Field;
 use WWW::WuFoo::Entry;
 use JSON;
+use Data::Dumper;
 
 # ABSTRACT: The Forms API is used to gather details about the forms you have permission to access. This API can be used to create a list of all forms belonging to a user and dynamically generate a form embed snippet to use in your application.
 
@@ -43,18 +45,27 @@ sub all_entry_values {
 sub entries {
     my ($self) = @_;
     
-    my $url = '/api/v3/forms/' . $self->hash . '/entries.json';
-    my $ref = $self->_wufoo->do_request($url)->{Entries};
+    my $pagestart = 0;
+    my $ref;
     my @arr;
-    foreach my $entry (@$ref) {
-        my $hash;
-        foreach my $key (keys %$entry) {
-            $hash->{lc $key} = $entry->{$key} || '';
-        }
+    my $entries = 0;
 
-        $hash->{_form} = $self;
-        $hash->{_original} = $entry;
-        push(@arr,WWW::WuFoo::Entry->new($hash));
+    while ($pagestart == 0 || $entries > 0) {
+        my $url = '/api/v3/forms/' . $self->hash . '/entries.json?pageSize=100&pageStart=' . $pagestart;
+        my $ref = $self->_wufoo->do_request($url)->{Entries};
+        foreach my $entry (@$ref) {
+            my $hash;
+            foreach my $key (keys %$entry) {
+                $hash->{lc $key} = $entry->{$key} || '';
+            }
+
+            $hash->{_form} = $self;
+            $hash->{_original} = $entry;
+            push(@arr,WWW::WuFoo::Entry->new($hash));
+        }
+        
+        $entries = scalar @$ref;
+        $pagestart += 100;
     }
 
     return \@arr;
@@ -67,15 +78,17 @@ sub fields {
     my $url = '/api/v3/forms/' . $self->hash . '/fields.json';
     my $ref = $self->_wufoo->do_request($url)->{Fields};
 
+#    my $orderby = 0;
     foreach my $field (@$ref) {
         my $hash;
         foreach my $key (keys %$field) {
             $hash->{lc $key} = $field->{$key} || '';
         }
 
-#        print Dumper($field);
+#        $hash->{orderby} = $orderby;
         $hash->{_form} = $self;
         push(@arr,WWW::WuFoo::Field->new($hash));
+#        $orderby++;
     }
 
     return \@arr;

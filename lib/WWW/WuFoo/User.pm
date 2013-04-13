@@ -1,6 +1,6 @@
 package WWW::WuFoo::User;
 {
-  $WWW::WuFoo::User::VERSION = '0.006';
+  $WWW::WuFoo::User::VERSION = '0.007';
 }
 
 use Moose;
